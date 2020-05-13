@@ -14,7 +14,7 @@ module.exports = (req, res, next) => {
         return res.status(401).send({ error: 'you must be logged in.'});
     }
 
-    const token = authorization.replace('Bearer', ''); //katenoidaan Bearer pois..
+    const token = authorization.replace('Bearer ', ''); //katenoidaan Bearer pois.. tarkkana!!!!
 
     //validoidaan JWT ja määrätään toiminto joka suoritetaan jos ei err.
     jwt.verify(token, 'MY_SECRET_KEY', async (err, payload) => {
@@ -33,5 +33,6 @@ module.exports = (req, res, next) => {
 
 
     });
+    
 };
 
