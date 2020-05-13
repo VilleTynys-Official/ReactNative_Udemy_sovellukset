@@ -39,7 +39,7 @@ mongoose.connection.on('error', (err) => {
 });
 
 
-
+//test route
 app.get('/', (req, res)=>{
     res.send('hi there');
 });
