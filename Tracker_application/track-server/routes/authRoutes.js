@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 const User = mongoose.model('User');
 //otetaan käyttöön User, joka on ladattu mongooseen User.js -tiedostossa.
 
@@ -14,7 +15,10 @@ router.post('/signup', async (req, res) => {
     try{
     const user = new User({email, password}); //mongoosen User instanssi
     await user.save();  //mongoosen save operaatio tallentaa tiedot MongoDB:hen.
-    res.send('you made a post request')
+    
+    
+    const token = jwt.sign({ userId: user._id}, 'MY_SECRET_KEY');
+    res.send({token});
 
 
     } catch(err) {
