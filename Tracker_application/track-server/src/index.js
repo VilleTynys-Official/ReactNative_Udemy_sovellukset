@@ -3,6 +3,7 @@ require('./models/User');
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes =require('../routes/authRoutes');
+const requireAuth = require('./middlewares/requireAuth'); //itse rakennettu JWT tarkastus
 
 
 
@@ -39,9 +40,9 @@ mongoose.connection.on('error', (err) => {
 });
 
 
-//test route
-app.get('/', (req, res)=>{
-    res.send('hi there');
+//aina kun joku tekee get pyynnön root routee: tarkistetaan  et JWT kunnossa, jos on, suoritetaan 
+app.get('/', requireAuth, (req, res)=>{
+    res.send(`Your email: ${req.user.email}`);
 });
 
 
