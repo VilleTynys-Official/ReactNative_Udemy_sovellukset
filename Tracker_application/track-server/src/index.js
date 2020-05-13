@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const authRoutes =require('../routes/authRoutes');
 
 
@@ -7,6 +8,8 @@ const authRoutes =require('../routes/authRoutes');
 
 const app = express();
 
+//parsitaan json ulos postista
+app.use(express.json());
 //otetaan reititin käyttöön
 app.use(authRoutes);
 
