@@ -1,4 +1,8 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
+//otetaan käyttöön User, joka on ladattu mongooseen User.js -tiedostossa.
+
 
 //täl voidaan reitittää osoitteita
 const router = express.Router();
