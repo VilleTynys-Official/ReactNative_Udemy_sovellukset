@@ -9,10 +9,13 @@ const router = express.Router();
 
 
 //post request handler:
-router.post('/signup', (req, res) => {
-    console.log(req.body);
-    res.send ('you made a post request2');
+router.post('/signup', async (req, res) => {
+    const {email, password} = req.body; //parsitaan bodystä ulos email ja password
+    const user = new User({email, password}); //mongoosen User instanssi
+    await user.save();  //mongoosen save operaatio tallentaa tiedot MongoDB:hen.
 });
+
+
 
 
 //exportataan router applikaatiolle
