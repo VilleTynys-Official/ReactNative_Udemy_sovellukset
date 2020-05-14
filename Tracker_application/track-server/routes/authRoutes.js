@@ -8,7 +8,7 @@ const User = mongoose.model('User');//otetaan käyttöön User, joka on ladattu 
 //täl voidaan reitittää osoitteita
 const router = express.Router();
 
-//post signup handler:
+//signup handler:
 router.post('/signup', async (req, res) => {
     const {email, password} = req.body; //parsitaan bodystä ulos email ja password
     
@@ -26,7 +26,7 @@ router.post('/signup', async (req, res) => {
         }
 });
 
-//post signin handler:
+//signin handler:
 router.post('/signin', async (req, res) => {
     const {email, password} = req.body;
 
