@@ -1,8 +1,10 @@
 require('./models/User');
+require('./models/Track'); //nää varmistaa et toteutuu kerran.
 
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes =require('../routes/authRoutes');
+const trackRoutes = require('../routes/trackRoutes');
 const requireAuth = require('./middlewares/requireAuth'); //itse rakennettu JWT tarkastus
 
 
@@ -14,6 +16,8 @@ const app = express();
 app.use(express.json());
 //otetaan reititin käyttöön
 app.use(authRoutes);
+//otetaan track seuranta käyttöön
+app.use(trackRoutes);
 
 
 
