@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const User = mongoose.model('User');
-//otetaan käyttöön User, joka on ladattu mongooseen User.js -tiedostossa.
+const User = mongoose.model('User');//otetaan käyttöön User, joka on ladattu mongooseen User.js -tiedostossa.
+
 
 
 //täl voidaan reitittää osoitteita
