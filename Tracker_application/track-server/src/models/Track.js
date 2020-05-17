@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 
-//schema karttta pisteille. Luodaan tänne koska täs tapauksessa makes sense.
+//child schema, jossa on karttapisteet.
 const pointSchema = new mongoose.Schema({
     timestamp: Number,
     coords: {
