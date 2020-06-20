@@ -8,6 +8,8 @@ const User = mongoose.model('User');//otetaan käyttöön User, joka on ladattu 
 //täl voidaan reitittää osoitteita
 const router = express.Router();
 
+
+
 //signup handler:
 router.post('/signup', async (req, res) => {
     const {email, password} = req.body; //parsitaan bodystä ulos email ja password
@@ -26,15 +28,18 @@ router.post('/signup', async (req, res) => {
         }
 });
 
+
 //signin handler:
 router.post('/signin', async (req, res) => {
     const {email, password} = req.body;
+    console.log('*****email ja password: ', email, password)
 
     if (!email || !password){
-        return res.status(422).send({ error: 'Must provide email and password'});
+        return res.status(422).send({ error: 'Must provide email and password'}, '*****email ja passu', email, password);
     }
 
     const user = await User.findOne({ email });
+    console.log('tää on mailin tarkistuskohta')
     if (!user){
         return res.status(422).send({ error: 'Invalid password or email'});
     }
